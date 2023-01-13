@@ -37,10 +37,8 @@ export const useAuthStore = defineStore("auth", {
                     password: data.password
                 });
                 console.log(res.data.data.token);
-                this.tokenUser = res.data.data.token;
-                localStorage.setItem("token", tokenUser)
                 router.push({
-                    name: 'dashboard'
+                    name: 'kapal-pengawas'
                 });
             } catch (error) {
                 // if (error.res.status === 404 ) {

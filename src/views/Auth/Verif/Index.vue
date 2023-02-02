@@ -4,10 +4,10 @@
           <div class="mx-auto flex w-full max-w-md flex-col space-y-16">
             <div class="flex flex-col items-center justify-center text-center space-y-2">
               <div class="font-semibold text-3xl">
-                <p>Email Verifikasi</p>
+                <p>Whatstapp Verifikasi</p>
               </div>
               <div class="flex flex-row text-sm font-medium text-gray-400">
-                <p>kode Verifikasi telah dikirim ke ramadany**@gmail.com</p>
+                <p>kode Verifikasi telah dikirim ke 08******7</p>
               </div>
             </div>
       

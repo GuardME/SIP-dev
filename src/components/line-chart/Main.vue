@@ -46,7 +46,7 @@
       ],
       datasets: [
         {
-          label: "Html Template",
+          label: "",
           data: [0, 200, 250, 200, 500, 450, 850, 1050, 950, 1100, 900, 1200],
           borderWidth: 2,
           borderColor: colorScheme.value ? colors.primary() : "",
@@ -55,7 +55,7 @@
           tension: 0.4,
         },
         {
-          label: "VueJs Template",
+          label: "",
           data: [0, 300, 400, 560, 320, 600, 720, 850, 690, 805, 1200, 1010],
           borderWidth: 2,
           borderDash: [2, 2],
@@ -100,7 +100,7 @@
             },
             color: colors.slate["500"](0.8),
             callback: function (value) {
-              return "$" + value;
+              return "" + value;
             },
           },
           grid: {

@@ -5,8 +5,36 @@ export const useTopMenuStore = defineStore("topMenu", {
     menu: [
       {
         icon: "HomeIcon",
-        pageName: "kapal-pengawas",
+        pageName: "dashboard",
         title: "Dashboard",
+        subMenu: [
+          {
+            icon: "HomeIcon",
+            pageName: "utama",
+            title: "Utama",
+          },
+          {
+            icon: "HomeIcon",
+            pageName: "kapal-pengawas",
+            title: "Operasi Kapal Pengawas",
+          },
+          {
+            icon: "HomeIcon",
+            title: "Kapal Perikanan",
+          },
+          {
+            icon: "HomeIcon",
+            title: "Pelaku Usaha"
+          },
+          {
+            icon: "HomeIcon",
+            title: "Pengaduan Masyarakat"
+          },
+          {
+            icon: "HomeIcon",
+            title: "Inspeksi Lapangan"
+          }
+        ]
       },
       {
         icon: "ActivityIcon",
@@ -15,31 +43,31 @@ export const useTopMenuStore = defineStore("topMenu", {
         subMenu: [
           {
             icon: "HomeIcon",
-            pageName: "",
+            pageName: "target-operasi",
             title: "Target Operasi",
             ignore: true
           },
           {
             icon: "HomeIcon",
-            pageName: "",
+            pageName: "rencana-operasi",
             title: "Rencana Operasi",
             ignore: true
           },
           {
             icon: "HomeIcon",
-            pageName: "",
+            pageName: "hasil-operasi",
             title: "Hasil Operasi",
             ignore: true
           },
           {
             icon: "HomeIcon",
-            pageName: "",
+            pageName: "ba-pemeriksaan",
             title: "BA Hasil Pemeriksaan",
             ignore: true
           },
           {
             icon: "HomeIcon",
-            pageName: "",
+            pageName: "rincian-kapal",
             title: "Rincian Penangkapan Kapal",
             ignore: true
           },

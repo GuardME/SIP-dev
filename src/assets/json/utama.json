@@ -1,0 +1,25 @@
+[
+  {
+    "name": [
+        "Kapal Malaysia",
+        "Kapal Vietnam"
+    ],
+    "latitude": "5.5819029",
+    "longitude": "95.3148146,17"
+  },
+  {
+    "name": "Kapal Australia",
+    "latitude": "-8.7406784",
+    "longitude": "115.2081603"
+  },
+  {
+    "name": "Kapal Instansi",
+    "latitude": "0.0062207",
+    "longitude": "109.2699582"
+  },
+  {
+    "name": "Kapal Filipina",
+    "latitude": "3.36081",
+    "longitude": "117.4995141"
+  }
+]

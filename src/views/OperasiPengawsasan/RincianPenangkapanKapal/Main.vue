@@ -1,76 +1,9 @@
 <template>
   <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">Target Operasi Kapal Pengawasan</h2>
+    <h2 class="text-lg font-medium mr-auto">Hasil Operasi Kapal Pengawas Perikanan</h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <!-- <button class="btn btn-primary shadow-md mr-2">Tambah Target Operasi</button> -->
 
 
-            <!-- BEGIN: Modal Toggle -->
-            <div class="text-center mr-2">
-              <a
-                href="javascript:;"
-                @click="headerFooterModalPreview = true"
-                class="btn btn-primary"
-                >Tambah Target Operasi</a
-              >
-            </div>
-            <!-- END: Modal Toggle -->
-            <!-- BEGIN: Modal Content -->
-            <Modal
-              :show="headerFooterModalPreview"
-              @hidden="headerFooterModalPreview = false"
-            >
-              <ModalHeader>
-                <h2 class="font-medium text-base mr-auto">Tambah Target Hari Operasi Kapal Pengawas</h2>
-      
-                <Dropdown class="sm:hidden">
-                  <DropdownToggle class="w-5 h-5 block" href="javascript:;">
-                    <MoreHorizontalIcon class="w-5 h-5 text-slate-500" />
-                  </DropdownToggle>
-                  <DropdownMenu class="w-40">
-                    <DropdownContent>
-                      <DropdownItem>
-                        <FileIcon class="w-4 h-4 mr-2" />
-                        Download Docs
-                      </DropdownItem>
-                    </DropdownContent>
-                  </DropdownMenu>
-                </Dropdown>
-              </ModalHeader>
-              <ModalBody class="grid grid-cols-12 gap-4 gap-y-3">
-        
-                <div class="col-span-12 sm:col-span-6">
-                  <label for="modal-form-6" class="form-label">Tahun</label>
-                  <select id="modal-form-6" class="form-select">
-                    <option>10</option>
-                    <option>25</option>
-                    <option>35</option>
-                    <option>50</option>
-                  </select>
-                </div>
-                      <div class="col-span-12 sm:col-span-6">
-                  <label for="modal-form-3" class="form-label">Target Hari Operasi</label>
-                  <input
-                    id="modal-form-3"
-                    type="text"
-                    class="form-control"
-                    placeholder="/hari"
-                  />
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                <button
-                  type="button"
-                  @click="headerFooterModalPreview = false"
-                  class="btn btn-outline-secondary w-20 mr-1"
-                >
-                  Cancel
-                </button>
-                <button type="button" class="btn btn-primary w-20">Send</button>
-              </ModalFooter>
-            </Modal>
-            <!-- END: Modal Content -->
-    
       <Dropdown class="ml-auto sm:ml-0">
         <DropdownToggle class="btn px-2 box">
           <span class="w-5 h-5 flex items-center justify-center">
@@ -93,19 +26,35 @@
   <!-- BEGIN: HTML Table Data -->
   <div class="intro-y box p-5 mt-5">
     <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-      <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
+      <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" style="background-color: ">
+      <label class="w-20 my-2 flex-none mr-2"
+            >Pilih Tanggal</label
+          >
+      <Litepicker v-model="daterange" :options="{
+                  autoApply: false,
+                  singleMode: false,
+                  numberOfColumns: 2,
+                  numberOfMonths: 2,
+                  showWeekNumbers: true,
+                  dropdowns: {
+                    minYear: 1990,
+                    maxYear: null,
+                    months: true,
+                    years: true,
+                  },
+                }" class="form-control w-56 block mx-auto mr-2" />
         <div class="sm:flex items-center sm:mr-4">
-          <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2"
-            >Tahun</label
+          <label class="w-71 flex-none xl:w-15 xl:flex-initial mr-2"
+            >Kapal Pengawas</label
           >
           <select
             id="tabulator-html-filter-field"
             v-model="filter.field"
             class="form-select w-full sm:w-32 2xl:w-full mt-2 sm:mt-0 sm:w-auto"
           >
-            <option value="name">2019</option>
-            <option value="category">2020</option>
-            <option value="remaining_stock">2022</option>
+            <option value="name">HIU 15</option>
+            <option value="category">HIU 13</option>
+            <option value="remaining_stock">HIU MACAN</option>
           </select>
         </div>
     
@@ -197,7 +146,6 @@ const filter = reactive({
   type: "like",
   value: "",
 });
-const headerFooterModalPreview = ref(false);
 
 const imageAssets = import.meta.globEager(
   `/src/assets/images/*.{jpg,jpeg,png,svg}`
@@ -227,8 +175,8 @@ const initTabulator = () => {
 
       // For HTML table
       {
-        title: "Tahun",
-        minWidth: 200,
+        title: "Tanggal",
+        minWidth: 100,
         responsive: 0,
         field: "name",
         vertAlign: "middle",
@@ -246,8 +194,8 @@ const initTabulator = () => {
         },
       },
       {
-        title: "Target Pertahun",
-        minWidth: 200,
+        title: "Kapal Pengawas",
+        minWidth: 100,
         field: "images",
         hozAlign: "center",
         vertAlign: "middle",
@@ -256,21 +204,21 @@ const initTabulator = () => {
         formatter(cell) {
           return `<div class="flex lg:justify-center">
                   <div class="intro-x w-10 h-10 image-fit">
-                    <img alt="" class="rounded-full" src="${
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-full" src="${
                       imageAssets[
                         "/src/assets/images/" + cell.getData().images[0]
                       ].default
                     }">
                   </div>
                   <div class="intro-x w-10 h-10 image-fit -ml-5">
-                    <img alt="" class="rounded-full" src="${
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-full" src="${
                       imageAssets[
                         "/src/assets/images/" + cell.getData().images[1]
                       ].default
                     }">
                   </div>
                   <div class="intro-x w-10 h-10 image-fit -ml-5">
-                    <img alt="" class="rounded-full" src="${
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-full" src="${
                       imageAssets[
                         "/src/assets/images/" + cell.getData().images[2]
                       ].default
@@ -280,8 +228,8 @@ const initTabulator = () => {
         },
       },
       {
-        title: "Pelaksanaan Operasi",
-        minWidth: 200,
+        title: "Nama Kapal",
+        minWidth: 100,
         field: "remaining_stock",
         hozAlign: "center",
         vertAlign: "middle",
@@ -289,8 +237,8 @@ const initTabulator = () => {
         download: false,
       },
        {
-        title: "Dibuat",
-        minWidth: 200,
+        title: "GT",
+        minWidth: 100,
         field: "remaining_stock",
         hozAlign: "center",
         vertAlign: "middle",
@@ -298,8 +246,8 @@ const initTabulator = () => {
         download: false,
       },
        {
-        title: "Terakhir Update",
-        minWidth: 200,
+        title: "Asal Negara Kapal",
+        minWidth: 100,
         field: "remaining_stock",
         hozAlign: "center",
         vertAlign: "middle",
@@ -307,8 +255,8 @@ const initTabulator = () => {
         download: false,
       },
       {
-        title: "Riwayat Update",
-        minWidth: 200,
+        title: "Bendera Kapal",
+        minWidth: 100,
         field: "status",
         hozAlign: "center",
         vertAlign: "middle",
@@ -324,9 +272,100 @@ const initTabulator = () => {
               </div>`;
         },
       },
+       {
+        title: "Jumlah Awak(orang)",
+        minWidth: 100,
+        field: "status",
+        hozAlign: "center",
+        vertAlign: "middle",
+        print: false,
+        download: false,
+        formatter(cell) {
+          return `<div class="flex items-center lg:justify-center ${
+            cell.getData().status ? "text-success" : "text-danger"
+          }">
+                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> ${
+                  cell.getData().status ? "Active" : "Inactive"
+                }
+              </div>`;
+        },
+      },
+       {
+        title: "Alat tangkap",
+        minWidth: 100,
+        field: "status",
+        hozAlign: "center",
+        vertAlign: "middle",
+        print: false,
+        download: false,
+        formatter(cell) {
+          return `<div class="flex items-center lg:justify-center ${
+            cell.getData().status ? "text-success" : "text-danger"
+          }">
+                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> ${
+                  cell.getData().status ? "Active" : "Inactive"
+                }
+              </div>`;
+        },
+      },
+          {
+        title: "Polisi Henrikhan",
+        minWidth: 100,
+        field: "status",
+        hozAlign: "center",
+        vertAlign: "middle",
+        print: false,
+        download: false,
+        formatter(cell) {
+          return `<div class="flex items-center lg:justify-center ${
+            cell.getData().status ? "text-success" : "text-danger"
+          }">
+                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> ${
+                  cell.getData().status ? "Active" : "Inactive"
+                }
+              </div>`;
+        },
+      },
+          {
+        title: "Dugaan Pelanggaran",
+        minWidth: 100,
+        field: "status",
+        hozAlign: "center",
+        vertAlign: "middle",
+        print: false,
+        download: false,
+        formatter(cell) {
+          return `<div class="flex items-center lg:justify-center ${
+            cell.getData().status ? "text-success" : "text-danger"
+          }">
+                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> ${
+                  cell.getData().status ? "Active" : "Inactive"
+                }
+              </div>`;
+        },
+      },
+          {
+        title: "Tindak Lanjut",
+        minWidth: 100,
+        field: "status",
+        hozAlign: "center",
+        vertAlign: "middle",
+        print: false,
+        download: false,
+        formatter(cell) {
+          return `<div class="flex items-center lg:justify-center ${
+            cell.getData().status ? "text-success" : "text-danger"
+          }">
+                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> ${
+                  cell.getData().status ? "Active" : "Inactive"
+                }
+              </div>`;
+        },
+      },
+      
       {
         title: "ACTIONS",
-        minWidth: 200,
+        minWidth: 100,
         field: "actions",
         responsive: 1,
         hozAlign: "center",

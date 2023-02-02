@@ -53,7 +53,7 @@
                 <input
                   type="text"
                   class="intro-x login__input form-control py-3 px-4 block mt-4"
-                  placeholder="Nama Karyawan"
+                  placeholder="Nama Pegawai"
                 />
                 <input
                   type="text"

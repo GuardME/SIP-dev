@@ -38,7 +38,7 @@ export const useAuthStore = defineStore("auth", {
                 });
                 console.log(res.data.data.token);
                 router.push({
-                    name: 'kapal-pengawas'
+                    name: 'utama'
                 });
             } catch (error) {
                 // if (error.res.status === 404 ) {

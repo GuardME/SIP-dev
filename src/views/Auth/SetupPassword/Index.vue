@@ -27,7 +27,7 @@
                           <label for="newsletter" class="font-light text-gray-500 dark:text-gray-300">I accept the <a class="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
                         </div>
                     </div>
-                    <router-link to="/dashboard/kapal-pengawas" class="btn btn-primary w-24 mr-1 mb-2">Konfirmasi</router-link>
+                    <router-link to="/dashboard/utama" class="btn btn-primary w-24 mr-1 mb-2">Konfirmasi</router-link>
                 </form>
             </div>
         </div>

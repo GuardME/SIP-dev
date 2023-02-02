@@ -1,76 +1,10 @@
 <template>
   <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-    <h2 class="text-lg font-medium mr-auto">Target Operasi Kapal Pengawasan</h2>
+    <h2 class="text-lg font-medium mr-auto">Rencana Operasi Kapal Pengawas Perikanan</h2>
     <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <!-- <button class="btn btn-primary shadow-md mr-2">Tambah Target Operasi</button> -->
-
-
-            <!-- BEGIN: Modal Toggle -->
-            <div class="text-center mr-2">
-              <a
-                href="javascript:;"
-                @click="headerFooterModalPreview = true"
-                class="btn btn-primary"
-                >Tambah Target Operasi</a
-              >
-            </div>
-            <!-- END: Modal Toggle -->
-            <!-- BEGIN: Modal Content -->
-            <Modal
-              :show="headerFooterModalPreview"
-              @hidden="headerFooterModalPreview = false"
-            >
-              <ModalHeader>
-                <h2 class="font-medium text-base mr-auto">Tambah Target Hari Operasi Kapal Pengawas</h2>
+      <router-link to="/dashboard/tambah-rencana-operasi" class="btn btn-primary shadow-md mr-2">Tambah Operasi Pengawasan</router-link>
       
-                <Dropdown class="sm:hidden">
-                  <DropdownToggle class="w-5 h-5 block" href="javascript:;">
-                    <MoreHorizontalIcon class="w-5 h-5 text-slate-500" />
-                  </DropdownToggle>
-                  <DropdownMenu class="w-40">
-                    <DropdownContent>
-                      <DropdownItem>
-                        <FileIcon class="w-4 h-4 mr-2" />
-                        Download Docs
-                      </DropdownItem>
-                    </DropdownContent>
-                  </DropdownMenu>
-                </Dropdown>
-              </ModalHeader>
-              <ModalBody class="grid grid-cols-12 gap-4 gap-y-3">
-        
-                <div class="col-span-12 sm:col-span-6">
-                  <label for="modal-form-6" class="form-label">Tahun</label>
-                  <select id="modal-form-6" class="form-select">
-                    <option>10</option>
-                    <option>25</option>
-                    <option>35</option>
-                    <option>50</option>
-                  </select>
-                </div>
-                      <div class="col-span-12 sm:col-span-6">
-                  <label for="modal-form-3" class="form-label">Target Hari Operasi</label>
-                  <input
-                    id="modal-form-3"
-                    type="text"
-                    class="form-control"
-                    placeholder="/hari"
-                  />
-                </div>
-              </ModalBody>
-              <ModalFooter>
-                <button
-                  type="button"
-                  @click="headerFooterModalPreview = false"
-                  class="btn btn-outline-secondary w-20 mr-1"
-                >
-                  Cancel
-                </button>
-                <button type="button" class="btn btn-primary w-20">Send</button>
-              </ModalFooter>
-            </Modal>
-            <!-- END: Modal Content -->
-    
+
       <Dropdown class="ml-auto sm:ml-0">
         <DropdownToggle class="btn px-2 box">
           <span class="w-5 h-5 flex items-center justify-center">
@@ -93,17 +27,33 @@
   <!-- BEGIN: HTML Table Data -->
   <div class="intro-y box p-5 mt-5">
     <div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-      <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
+      <form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" style="background-color: ">
+      <label class="w-20 my-2 flex-none mr-2"
+            >Pilih Tanggal</label
+          >
+      <Litepicker v-model="daterange" :options="{
+                  autoApply: false,
+                  singleMode: false,
+                  numberOfColumns: 2,
+                  numberOfMonths: 2,
+                  showWeekNumbers: true,
+                  dropdowns: {
+                    minYear: 1990,
+                    maxYear: null,
+                    months: true,
+                    years: true,
+                  },
+                }" class="form-control w-56 block mx-auto mr-2" />
         <div class="sm:flex items-center sm:mr-4">
-          <label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2"
-            >Tahun</label
+          <label class="w-72 flex-none xl:w-30 xl:flex-initial mr-2"
+            >wilayah operasi WPPNRI</label
           >
           <select
             id="tabulator-html-filter-field"
             v-model="filter.field"
             class="form-select w-full sm:w-32 2xl:w-full mt-2 sm:mt-0 sm:w-auto"
           >
-            <option value="name">2019</option>
+            <option value="name">WPPNRI</option>
             <option value="category">2020</option>
             <option value="remaining_stock">2022</option>
           </select>
@@ -197,7 +147,6 @@ const filter = reactive({
   type: "like",
   value: "",
 });
-const headerFooterModalPreview = ref(false);
 
 const imageAssets = import.meta.globEager(
   `/src/assets/images/*.{jpg,jpeg,png,svg}`
@@ -256,21 +205,21 @@ const initTabulator = () => {
         formatter(cell) {
           return `<div class="flex lg:justify-center">
                   <div class="intro-x w-10 h-10 image-fit">
-                    <img alt="" class="rounded-full" src="${
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-full" src="${
                       imageAssets[
                         "/src/assets/images/" + cell.getData().images[0]
                       ].default
                     }">
                   </div>
                   <div class="intro-x w-10 h-10 image-fit -ml-5">
-                    <img alt="" class="rounded-full" src="${
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-full" src="${
                       imageAssets[
                         "/src/assets/images/" + cell.getData().images[1]
                       ].default
                     }">
                   </div>
                   <div class="intro-x w-10 h-10 image-fit -ml-5">
-                    <img alt="" class="rounded-full" src="${
+                    <img alt="Midone Tailwind HTML Admin Template" class="rounded-full" src="${
                       imageAssets[
                         "/src/assets/images/" + cell.getData().images[2]
                       ].default

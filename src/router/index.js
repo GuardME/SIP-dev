@@ -12,6 +12,12 @@ import UnitKerja from '../views/MasterData/UnitKerja/Main.vue';
 import Portal from '../views/Portal/Main.vue';
 import DashboardKapalPengawas from '../views/Dashboard/KapalPengawas/Main.vue';
 import TargetOperasiKP from "../views/OperasiPengawsasan/TargetOperasi/Main.vue";
+import RencanaOperasiKP from "../views/OperasiPengawsasan/RencanaOperasi/Main.vue";
+import TambahRencanaOperasiKP from "../views/OperasiPengawsasan/RencanaOperasi/TambahOperasi/Main.vue";
+import HasilOperasi from "../views/OperasiPengawsasan/HasilOperasi/Main.vue";
+import BaPemeriksaan from "../views/OperasiPengawsasan/BaHasilPemeriksaan/Main.vue";
+import RincianKapal from "../views/OperasiPengawsasan/RincianPenangkapanKapal/Main.vue";
+import DashboardUtama from "../views/Dashboard/Utama/Main.vue";
 
 const routes = [
   {
@@ -50,14 +56,44 @@ const routes = [
         component: DashboardKapalPengawas,
       },
       {
+        path: "utama",
+        name: "utama",
+        component: DashboardUtama,
+      },
+      {
         path: "target-operasi",
         name: "target-operasi",
         component: TargetOperasiKP,
       },
       {
+        path: "rencana-operasi",
+        name: "rencana-operasi",
+        component: RencanaOperasiKP,
+      },
+      {
+        path: "tambah-rencana-operasi",
+        name: "tambah-rencana-operasi",
+        component: TambahRencanaOperasiKP,
+      },
+      {
         path: "unit_kerja",
         name: "unit_kerja",
         component: UnitKerja
+      },
+      {
+        path: "hasil-operasi",
+        name: "hasil-operasi",
+        component: HasilOperasi
+      },
+      {
+        path: "ba-pemeriksaan",
+        name: "ba-pemeriksaan",
+        component: BaPemeriksaan
+      },
+      {
+        path: "rincian-kapal",
+        name: "rincian-kapal",
+        component: RincianKapal
       },
     ],
   },
